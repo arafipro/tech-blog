@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export const runtime = "edge";
 
-export const GET = async (req: Request, res: NextResponse) => {
+export async function GET(req: Request, res: NextResponse) {
   try {
     await connect();
     const posts = await prisma.post.findMany();
@@ -14,9 +14,9 @@ export const GET = async (req: Request, res: NextResponse) => {
   } finally {
     await disconnect();
   }
-};
+}
 
-export const POST = async (req: Request, res: NextResponse) => {
+export async function POST(req: Request, res: NextResponse) {
   try {
     const { title, content } = await req.json();
     await connect();
@@ -29,4 +29,4 @@ export const POST = async (req: Request, res: NextResponse) => {
   } finally {
     await disconnect();
   }
-};
+}
