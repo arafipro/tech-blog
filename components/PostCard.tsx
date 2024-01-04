@@ -1,4 +1,5 @@
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { dateFormat } from "@/utils/dateFormat";
 
 export default function PostCard({
   title,
@@ -6,8 +7,8 @@ export default function PostCard({
   updateAt,
 }: {
   title: string;
-  createAt: string;
-  updateAt: string;
+  createAt: Date;
+  updateAt: Date;
 }) {
   return (
     <Card className="m-4 w-96">
@@ -15,8 +16,8 @@ export default function PostCard({
         <CardTitle className="text-center mb-10">{title}</CardTitle>
       </CardHeader>
       <CardFooter className="flex gap-x-4 justify-center">
-        <p>{createAt}</p>
-        <p>{updateAt}</p>
+        <p>{dateFormat(createAt)}</p>
+        <p>{dateFormat(updateAt)}</p>
       </CardFooter>
     </Card>
   );
