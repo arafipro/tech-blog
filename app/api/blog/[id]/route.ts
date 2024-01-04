@@ -20,6 +20,26 @@ export async function GET(
   }
 }
 
+export async function PUT(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  const id = params.id;
+  const { title, content } = await req.json();
+  try {
+    await connect();
+    const post = await prisma.post.update({
+      data: { title, content },
+      where: { id },
+    });
+    return NextResponse.json({ message: "Success", post }, { status: 200 });
+  } catch (err) {
+    return NextResponse.json({ message: "Error", err }, { status: 500 });
+  } finally {
+    await disconnect();
+  }
+}
+
 export async function DELETE(
   request: Request,
   { params }: { params: { id: string } }
