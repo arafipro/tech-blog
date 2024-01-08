@@ -1,5 +1,3 @@
-import AppBar from "@/components/AppBar";
-import AuthProvider from "@/providers/AuthProvider";
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
@@ -21,12 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <AuthProvider>
-        <body className={notoSansJp.className}>
-          <AppBar />
-          {children}
-        </body>
-      </AuthProvider>
+      <body className={notoSansJp.className}>{children}</body>
     </html>
   );
 }

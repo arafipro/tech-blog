@@ -1,5 +1,6 @@
 "use client";
 
+import Header from "@/components/header/Header";
 import PostCard from "@/components/PostCard";
 import { getAllPosts } from "@/lib/blogApi";
 import { useEffect, useState } from "react";
@@ -14,15 +15,18 @@ export default function Page() {
     fetchPosts();
   }, []);
   return (
-    <section className="flex flex-wrap justify-center">
-      {posts.map((post: Post) => (
-        <PostCard
-          key={post.id}
-          title={post.title}
-          createAt={post.createAt}
-          updateAt={post.updateAt}
-        />
-      ))}
-    </section>
+    <>
+      <Header />
+      <section className="flex flex-wrap justify-center">
+        {posts.map((post: Post) => (
+          <PostCard
+            key={post.id}
+            title={post.title}
+            createAt={post.createAt}
+            updateAt={post.updateAt}
+          />
+        ))}
+      </section>
+    </>
   );
 }
