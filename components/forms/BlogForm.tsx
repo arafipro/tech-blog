@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { postBlog } from "@/lib/blogApi";
 import { FormSchema, FormSchemaType } from "@/lib/validationSchema/FormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -30,7 +31,7 @@ export default function BlogForm({
   });
 
   async function onSubmit(data: FormSchemaType) {
-    () => {};
+    await postBlog(data);
   }
 
   return (
