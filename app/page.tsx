@@ -17,7 +17,7 @@ export default function Page() {
   return (
     <>
       <Header />
-      <section className="flex flex-wrap justify-center">
+      <section className="flex flex-wrap justify-center max-w-screen-2xl mx-auto">
         {posts.map((post: Post) => (
           <PostCard
             key={post.id}
