@@ -14,6 +14,7 @@ import { postBlog } from "@/lib/blogApi";
 import { FormSchema, FormSchemaType } from "@/lib/validationSchema/FormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import MarkdownPreview from "@/components/markdown/MarkdownPreview";
 
 export default function BlogForm({
   title,
@@ -76,7 +77,7 @@ export default function BlogForm({
                     className="text-lg font-medium leading-relaxed resize-none h-screen lg:w-1/2"
                   />
                   <div className="overflow-y-auto lg:w-1/2 lg:block hidden">
-                    {form.getValues().content}
+                    <MarkdownPreview content={form.getValues().content} />
                   </div>
                 </div>
               </FormControl>
