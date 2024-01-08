@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <AdminHeader />
-      {children}
+      <div className="px-4 mt-4">{children}</div>
     </AuthProvider>
   );
 }
