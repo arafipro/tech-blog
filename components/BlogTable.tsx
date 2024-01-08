@@ -16,18 +16,24 @@ export default function BlogTable({ posts }: { posts: Post[] }) {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>タイトル</TableHead>
-          <TableHead>投稿日時</TableHead>
-          <TableHead>更新日時</TableHead>
-          <TableHead></TableHead>
+          <TableHead className="w-1/2">タイトル</TableHead>
+          <TableHead className="w-1/6">投稿日時</TableHead>
+          <TableHead className="w-1/6">更新日時</TableHead>
+          <TableHead className="mx-auto">
+            <Button
+              onClick={async () => await router.push("/dashboard/blog/create")}
+            >
+              新規記事投稿
+            </Button>
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {posts.map((post: Post) => (
           <TableRow key={post.id}>
-            <TableCell className="w-1/2">{post.title}</TableCell>
-            <TableCell className="w-1/6">{dateFormat(post.createAt)}</TableCell>
-            <TableCell className="w-1/6">{dateFormat(post.updateAt)}</TableCell>
+            <TableCell>{post.title}</TableCell>
+            <TableCell>{dateFormat(post.createAt)}</TableCell>
+            <TableCell>{dateFormat(post.updateAt)}</TableCell>
             <TableCell className="flex gap-4">
               <Button
                 onClick={async () => {
