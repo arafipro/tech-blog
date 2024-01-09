@@ -21,6 +21,7 @@ export default function Page() {
         {posts.map((post: Post) => (
           <PostCard
             key={post.id}
+            id={post.id}
             title={post.title}
             createAt={post.createAt}
             updateAt={post.updateAt}
