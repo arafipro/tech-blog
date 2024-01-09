@@ -38,9 +38,9 @@ export default function BlogTable({ posts }: { posts: Post[] }) {
             <TableCell>{dateFormat(post.updateAt)}</TableCell>
             <TableCell className="flex gap-4">
               <Button
-                onClick={async () => {
-                  console.log(post.id);
-                }}
+                onClick={async () =>
+                  await router.push(`/blog/${post.id}/detail`)
+                }
               >
                 Preview
               </Button>

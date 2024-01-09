@@ -13,6 +13,16 @@ export async function getAllPosts() {
   return res.json();
 }
 
+export async function getPost(id: string) {
+  const res = await fetch(`${url}/api/blog/${id}`, {
+    cache: "no-cache",
+  });
+  if (!res.ok) {
+    throw new Error("Failed to fetch post data");
+  }
+  return res.json();
+}
+
 export async function postBlog(data: FormSchemaType) {
   const { title, content } = data;
   const res = await fetch(`${url}/api/blog/`, {
